@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TimePassers</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+<div class="login-box">
+<h1>TimePassers</h1>
+
+<input type="text" id="realName" placeholder="Real Name">
+<input type="text" id="username" placeholder="Username">
+
+<select id="relation">
+<option value="normal">Normal User</option>
+<option value="elder">In relation with moderator</option>
+</select>
+
+<button id="joinBtn">Join Chat</button>
+</div>
+</div>
+
+<div class="chat-app hidden" id="chatApp">
+<div class="sidebar">
+<div class="logo">TimePassers</div>
+<div id="onlineUsers"></div>
+</div>
+
+<div class="chat-container">
+<div class="chat-header">
+<h2>Department Chat</h2>
+</div>
+
+<div class="messages" id="messages"></div>
+
+<div class="message-bar">
+<input type="text" id="messageInput" placeholder="Type a message...">
+<button id="sendBtn">Send</button>
+</div>
+</div>
+</div>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
