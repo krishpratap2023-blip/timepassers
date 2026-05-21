@@ -6,15 +6,7 @@ query,
 orderBy,
 onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-let db = null;
-
-try{
-  const firebaseModule = await import('./firebase.js');
-  db = firebaseModule.db;
-}catch(err){
-  console.log("Firebase not connected yet");
-}
+import { db } from './firebase.js';
 
 const joinBtn = document.getElementById('joinBtn');
 const sendBtn = document.getElementById('sendBtn');
@@ -55,11 +47,6 @@ async function sendMessage(){
 const text = messageInput.value.trim();
 
 if(!text) return;
-
-if(!db){
-alert("Firebase not configured yet");
-return;
-}
 
 await addDoc(collection(db,'messages'),{
 text,
