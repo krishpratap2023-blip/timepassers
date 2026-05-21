@@ -1,4 +1,11 @@
-import { db } from './firebase.js';
+let db = null;
+
+try{
+  const firebaseModule = await import('./firebase.js');
+  db = firebaseModule.db;
+}catch(err){
+  console.log("Firebase not connected yet");
+}
 let currentUser=null;
 
 joinBtn.onclick=()=>{
@@ -30,6 +37,11 @@ const text=messageInput.value.trim();
 
 if(!text) return;
 
+if(!db){
+alert("Firebase not configured yet");
+return;
+}
+
 await addDoc(collection(db,'messages'),{
 text,
 sender:currentUser.realName,
@@ -39,7 +51,6 @@ createdAt:serverTimestamp()
 
 messageInput.value='';
 }
-
 const q=query(collection(db,'messages'),orderBy('createdAt'));
 
 onSnapshot(q,(snapshot)=>{
