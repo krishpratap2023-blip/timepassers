@@ -51,6 +51,8 @@ createdAt:serverTimestamp()
 
 messageInput.value='';
 }
+if(db){
+
 const q=query(collection(db,'messages'),orderBy('createdAt'));
 
 onSnapshot(q,(snapshot)=>{
@@ -77,3 +79,4 @@ messages.appendChild(div);
 
 messages.scrollTop=messages.scrollHeight;
 });
+}
